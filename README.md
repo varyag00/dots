@@ -4,11 +4,10 @@ This is a collection of my dotfiles, which are managed using [chezmoi](https://w
 
 ## Usage
 
-To install the dotfiles, run:
+To install the dotfiles on a new machine, run:
 
 ```sh
-$ chezmoi init
-$ chezmoi apply
+$ chezmoi init --apply --verbose https://github.com/varyag00/dots.git
 ```
 
 To see which dotfiles are managed, run:
@@ -44,3 +43,5 @@ chezmoi re-add $FILE
 # 4. edit the dotfiles in $HOME, then run
 chezmoi merge $FILE
 ```
+
+To initialize the dotfiles in, run:

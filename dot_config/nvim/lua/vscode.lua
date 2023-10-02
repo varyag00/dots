@@ -20,6 +20,7 @@ end
 g.mapleader = ' '
 g.maplocalleader = ' '
 o.clipboard = 'unnamedplus'
+-- TODO: play around with these to get the sweet spot for gcc commenting
 o.timeoutlen = 100
 o.updatetime = 100
 o.backup = false
@@ -40,12 +41,13 @@ map('n', '<leader>O', 'O<ESC>')
 --
 -- map({ 'n', 'x' }, '<leader>w', action('workbench.action.files.save'))
 -- map({ 'n', 'x' }, '<leader>W', action('workbench.action.files.saveAll'))
-map('n', '<leader>q', action('workbench.action.closeActiveEditor'))
+-- map('n', '<leader>q', action('workbench.action.closeActiveEditor'))
 -- map('n', '<leader>[', action('workbench.action.previousEditor'))
 -- map('n', '<leader>]', action('workbench.action.nextEditor'))
 
 -- Commenting
-map('n', 'gcc', '<Plug>VSCodeCommentaryLine')
+-- BUG: doesn't work when the key combination is pressed too slowly (currently <100 ms as set above)
+map('n', 'gcc', '<Plug>VSCodeCommentaryLine') -- TODO: try adding a <CR>?
 map({ 'n', 'x', 'o' }, 'gc', '<Plug>VSCodeCommentary')
 
 -- Folds
