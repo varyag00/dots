@@ -1,0 +1,8 @@
+[user]
+	name = Dan Gonzalez
+	email = jdgonzal@proton.me
+[pull]
+	rebase = true
+[core]
+	excludesFile = /home/dan/.gitignore
+	editor = nvim
