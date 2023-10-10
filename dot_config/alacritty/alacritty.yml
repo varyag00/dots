@@ -117,9 +117,10 @@ import:
 
 font:
   normal:
-    # family: JetBrainsMonoNL NFM
-    family: MesloLGL Nerd Font Mono
-    size: 11
+    # family: Iosevka NFM
+    # family: JetBrainsMonoNL NF
+    family: MesloLGL Nerd Font
+    size: 10.0
 
 #font:
   # Normal (roman) font face
