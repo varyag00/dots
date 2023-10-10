@@ -43,7 +43,6 @@ local M = {
 
   -- magit
   --
-  if not vim.g.vscode then
   {
     "NeogitOrg/neogit",
     dependencies = {
@@ -65,7 +64,6 @@ local M = {
     config = true,
   },
 
-  end
   -- NOTE: pyright seems to work fine without this
   -- add pyright to lspconfig
   --   "neovim/nvim-lspconfig",
