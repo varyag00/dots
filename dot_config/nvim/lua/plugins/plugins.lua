@@ -41,6 +41,32 @@ local M = {
     },
   },
 
+  -- magit
+  --
+  if not vim.g.vscode then
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+      "nvim-telescope/telescope.nvim", -- optional
+      "sindrets/diffview.nvim", -- optional
+      "ibhagwan/fzf-lua", -- optional
+    },
+    opts = {
+      integrations = {
+        diffview = true,
+        telescope = true,
+      },
+    },
+    keys = {
+      -- NOTE: decide kind={ tab, floating }
+      { "<leader>gS", "<cmd>Neogit kind=tab<cr>", desc = "Magit Status" },
+    },
+    config = true,
+  },
+
+  end
+  -- NOTE: pyright seems to work fine without this
   -- add pyright to lspconfig
   --   "neovim/nvim-lspconfig",
   -- {

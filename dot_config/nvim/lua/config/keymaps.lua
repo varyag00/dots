@@ -13,11 +13,8 @@ local M = {
   vim.keymap.set("n", "<A-h>", "<cmd>BufferLineCyclePrev<cr>"),
   vim.keymap.set("n", "<A-l>", "<cmd>BufferLineCycleNext<cr>"),
 
-  vim.keymap.set("i", "jk", "<Esc>"),
+  vim.keymap.set("i", "jk", "<Esc><cr>"),
   -- use vim.keymap.set
 }
 
--- TODO: Alt-h/l to navigate buffers
--- TODO: <Leader>gg magit
--- TODO: <leader>bk bc buffer kill
 return M

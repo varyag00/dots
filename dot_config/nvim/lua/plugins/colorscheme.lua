@@ -4,6 +4,9 @@ local M = {
     lazy = true,
     name = "catppuccin",
     opts = {
+      dim_inactive = {
+        enabled = true
+      },
       integrations = {
         alpha = true,
         cmp = true,

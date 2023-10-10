@@ -3,11 +3,16 @@ if not vim.g.vscode then
   return {}
 end
 
-vim.o.timeoutlen = 100
-vim.o.updatetime = 100
+-- vim.o.timeoutlen = 500
+-- vim.o.updatetime = 100
+
 vim.keymap.set({ "n", "x", "o" }, "<leader>", ":call VSCodeNotify('vspacecode.space')<cr>")
 vim.keymap.set({ "n", "x", "o" }, "<C-p>", ":call VSCodeNotify('vspacecode.space')<cr>")
 
+vim.keymap.set("i", "jk", "<Esc><cr>")
+
+vim.keymap.set("n", "H", ":call VSCodeNotify('workbench.action.previousEditor')<cr>")
+vim.keymap.set("n", "L", ":call VSCodeNotify('workbench.action.nextEditor')<cr>")
 -- local keys = {
 --   -- reset
 --   --  TODO: bufferkill
@@ -23,8 +28,6 @@ vim.keymap.set({ "n", "x", "o" }, "<C-p>", ":call VSCodeNotify('vspacecode.space
 --   { "u", ":call VSCodeNotify('undo')<cr>" },
 --   { "<c-r>", ":call VSCodeNotify('redo')<cr>" },
 --
---   -- { "H", ":call VSCodeNotify('workbench.action.previousEditor')<cr>" },
---   -- { "L", ":call VSCodeNotify('workbench.action.nextEditor')<cr>" },
 --   -- { "ss", ":call VSCodeNotify('workbench.action.splitEditorDown')<cr>" },
 --   -- { "sv", ":call VSCodeNotify('workbench.action.splitEditor')<cr>" },
 --   -- { "sh", ":call VSCodeNotify('workbench.action.focusLeftGroup')<cr>" },
