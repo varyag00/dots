@@ -43,5 +43,3 @@ chezmoi re-add $FILE
 # 4. edit the dotfiles in $HOME, then run
 chezmoi merge $FILE
 ```
-
-To initialize the dotfiles in, run:
