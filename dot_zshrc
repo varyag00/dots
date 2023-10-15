@@ -20,6 +20,8 @@ export KUBECONFIG="$HOME/.kube/config"
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
+# bob nvim version manager
+export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
 # doom emacs
 export PATH=$HOME/.emacs.d/bin:$PATH
 
