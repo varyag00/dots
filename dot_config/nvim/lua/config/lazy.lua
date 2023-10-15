@@ -18,8 +18,6 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.lang.terraform" },
     { import = "lazyvim.plugins.extras.coding.codeium" },
-    -- NOTE: imported in vscode.lua
-    -- { import = "lazyvim.plugins.extras.vscode", enabled = vim.g.vscode ~= nil },
 
     -- import/override with your plugins
     { import = "plugins" },

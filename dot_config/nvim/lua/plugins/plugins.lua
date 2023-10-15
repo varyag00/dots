@@ -62,6 +62,24 @@ local M = {
       { "<leader>gS", "<cmd>Neogit kind=tab<cr>", desc = "Magit Status" },
     },
     config = true,
+    -- enabled = vim.g.vscode ~= nil,
+    vscode = false,
+  },
+  {
+    "folke/zen-mode.nvim",
+    keys = {
+      { "<leader>wo", ":ZenMode<cr>", desc = "Zen Mode" },
+    },
+  },
+  {
+    "nvim-telescope/telescope-frecency.nvim",
+    config = function()
+      require("telescope").load_extension("frecency")
+    end,
+    keys = {
+      -- NOTE: decide kind={ tab, floating }
+      { "<leader>f/", "<cmd>Telescope frecency<cr>", desc = "Telescope Frecency" },
+    },
   },
 
   -- NOTE: pyright seems to work fine without this

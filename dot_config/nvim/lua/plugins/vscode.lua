@@ -9,15 +9,37 @@ end
 vim.keymap.set({ "n", "x", "o" }, "<leader>", ":call VSCodeNotify('vspacecode.space')<cr>")
 vim.keymap.set({ "n", "x", "o" }, "<C-p>", ":call VSCodeNotify('vspacecode.space')<cr>")
 
-vim.keymap.set("i", "jk", "<Esc><cr>")
+vim.keymap.set("i", "jk", "<esc><cr>")
+vim.keymap.set("i", "kj", "<esc><cr>")
 
+-- navigation
 vim.keymap.set("n", "H", ":call VSCodeNotify('workbench.action.previousEditor')<cr>")
 vim.keymap.set("n", "L", ":call VSCodeNotify('workbench.action.nextEditor')<cr>")
+
+vim.keymap.set("n", "<leader>bd", "<nop>")
+vim.keymap.set("n", "<leader>bD", "<nop>")
+
+-- zen
+vim.keymap.set("n", "<leader>wo", ":call VSCodeNotify('workbench.action.toggleZenMode')<cr>")
+
+-- explorer
+vim.keymap.set("n", "<leader>e", ":call VSCodeNotify('workbench.view.explorer')<cr>")
+vim.keymap.set("n", "<leader>fe", "<leader>e")
+
+-- magit
+vim.keymap.set("n", "<leader>gg", ":call VSCodeNotify('magit.status')<cr>")
+vim.keymap.set("n", "<leader>gS", ":call VSCodeNotify('magit.status')<cr>")
+
+-- code actions
+vim.keymap.set("n", "<leader>ca", ":call VSCodeNotify('editor.action.quickFix')<cr>")
+vim.keymap.set("n", "<leader>cA", ":call VSCodeNotify('editor.action.sourceAction')<cr>")
+vim.keymap.set("n", "<leader>cr", ":call VSCodeNotify('editor.action.rename')<cr>")
+vim.keymap.set("n", "<leader>cf", ":call VSCodeNotify('editor.action.formatDocument')<cr>")
+
+vim.keymap.set("n", "<leader>ff", ":call VSCodeNotify('workbench.action.quickOpen')<cr>")
+vim.keymap.set("n", "<leader>fr", ":call VSCodeNotify('workbench.action.openRecent')<cr>")
 -- local keys = {
 --   -- reset
---   --  TODO: bufferkill
---   -- { "<leader>bd", "<nop>" },
---   -- { "<leader>bD", "<nop>" },
 --
 --   { { "n", "x", "o" }, "<leader>", ":call VSCodeNotify('vspacecode.space')<cr>" },
 --   { { "n", "x", "o" }, "<C-p>", ":call VSCodeNotify('vspacecode.space')<cr>" },
@@ -38,21 +60,14 @@ vim.keymap.set("n", "L", ":call VSCodeNotify('workbench.action.nextEditor')<cr>"
 --   -- { "gp", ":call VSCodeNotify('editor.action.peekDefinition')<cr>" },
 --   -- { "gP", ":call VSCodeNotify('editor.action.peekTypeDefinition')<cr>" },
 --   -- { "gcc", ":call VSCodeNotify('editor.action.commentLine')<cr>" },
---   -- { "<leader>e", ":call VSCodeNotify('workbench.view.explorer')<cr>" },
 --   -- { "<leader>fe", "<leader>e", remap = true },
 --   -- { "<leader>ff", ":call VSCodeNotify('workbench.action.quickOpen')<cr>" },
 --   -- { "<leader>fp", ":call VSCodeNotify('workbench.action.openRecent')<cr>" },
 --   -- { "<leader>fn", ":call VSCodeNotify('workbench.action.files.newUntitledFile')<cr>" },
---   -- { "<leader>wo", ":call VSCodeNotify('workbench.action.toggleZenMode')<cr>" },
---   -- { "<leader>gg", ":call VSCodeNotify('workbench.view.scm')<cr>" },
 --   --
 --   -- { "<c-j>", ":call VSCodeNotify('editor.action.marker.next')<cr>" },
 --   -- { "J", ":call VSCodeNotify('editor.action.marker.prev')<cr>" },
 --   -- { "<c-k>", ":call VSCodeNotify('editor.action.triggerParameterHints')<cr>", mode = { "n", "i" } },
---   -- { "<leader>ca", ":call VSCodeNotify('editor.action.quickFix')<cr>" },
---   -- { "<leader>cA", ":call VSCodeNotify('editor.action.sourceAction')<cr>" },
---   -- { "<leader>cr", ":call VSCodeNotify('editor.action.rename')<cr>" },
---   -- { "<leader>cf", ":call VSCodeNotify('editor.action.formatDocument')<cr>" },
 -- }
 
 -- vim.api.nvim_create_autocmd("User", {
