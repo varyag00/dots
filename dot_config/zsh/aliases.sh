@@ -31,6 +31,9 @@ fi
 
 if type "bat" &>/dev/null; then
 	alias cat="bat"
+# apt repo has a name conflict so it uses this name
+elif type "batcat" &>/dev/null; then
+	alias cat="batcat"
 fi
 
 if type "tre" &>/dev/null; then
