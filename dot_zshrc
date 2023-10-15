@@ -92,9 +92,9 @@ export KEYTIMEOUT=1
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='lvim'
+  export EDITOR='nvim'
 else
-  export EDITOR='lvim'
+  export EDITOR='nvim'
 fi
 
 # Compilation flags
@@ -128,6 +128,9 @@ else
 
 	[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 	[ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
+
+  # custom extensions
+	[ -f $ZSHDIR/fzf-custom.zsh ] && source $ZSHDIR/fzf-custom.zsh
 fi
 
 # WSL2 XServer
