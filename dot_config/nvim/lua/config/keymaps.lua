@@ -2,11 +2,6 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-local Util = require("lazyvim.util")
-local lazyterm = function()
-  Util.float_term(nil, { cwd = Util.get_root() })
-end
-
 -- NOTE: use vim.keymap.set
 local M = {
   -- buffers
@@ -24,7 +19,7 @@ local M = {
   vim.keymap.set("i", "jk", "<Esc><cr>"),
   vim.keymap.set("i", "kj", "<Esc><cr>"),
 
-  vim.keymap.set("n", "<c-\\>", lazyterm, { desc = "Terminal (root dir)" }),
+  vim.keymap.set("n", "<c-\\>", require("lazyvim.util").terminal.open, { desc = "Terminal (root dir)" }),
   vim.keymap.set("t", "<C-\\>", "<cmd>close<cr>", { desc = "Hide Terminal" }),
 
   -- Paste without replace clipboard

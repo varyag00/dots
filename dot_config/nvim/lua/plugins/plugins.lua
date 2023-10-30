@@ -71,6 +71,7 @@ local M = {
       { "<leader>wo", ":ZenMode<cr>", desc = "Zen Mode" },
     },
   },
+  -- BUG: seems broken
   {
     "nvim-telescope/telescope-frecency.nvim",
     config = function()
@@ -81,6 +82,18 @@ local M = {
       { "<leader>f/", "<cmd>Telescope frecency<cr>", desc = "Telescope Frecency" },
     },
   },
+  -- {
+  --   "someone-stole-my-name/yaml-companion.nvim",
+  --   dependencies = {
+  --     { "neovim/nvim-lspconfig" },
+  --     { "nvim-lua/plenary.nvim" },
+  --     { "nvim-telescope/telescope.nvim" },
+  --   },
+  --   config = function(_, opts)
+  --     require("yaml-companion").setup(opts)
+  --     require("telescope").load_extension("yaml_schema")
+  --   end,
+  -- },
 
   -- NOTE: pyright seems to work fine without this
   -- add pyright to lspconfig
