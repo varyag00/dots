@@ -1,3 +1,5 @@
+local Util = require("lazyvim.util")
+
 local M = {
   {
     "telescope.nvim",
@@ -59,7 +61,23 @@ local M = {
     },
     keys = {
       -- NOTE: decide kind={ tab, floating }
-      { "<leader>gS", "<cmd>Neogit kind=tab<cr>", desc = "Magit Status" },
+      { "<leader>gg", "<cmd>Neogit kind=tab<cr>", desc = "Magit Status" },
+      {
+        "n",
+        "<leader>gs",
+        function()
+          Util.terminal({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false })
+        end,
+        { desc = "Lazygit (root dir)" },
+      },
+      {
+        "n",
+        "<leader>gG",
+        function()
+          Util.terminal({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false })
+        end,
+        { desc = "Lazygit (cwd)" },
+      },
     },
     config = true,
     -- enabled = vim.g.vscode ~= nil,
@@ -71,7 +89,17 @@ local M = {
       { "<leader>wo", ":ZenMode<cr>", desc = "Zen Mode" },
     },
   },
-  -- BUG: seems broken
+  -- it ain't elisp, but it's something. fennel seems interesting (compile lisp to lua): https://fennel-lang.org
+  {
+    "rafcamlet/nvim-luapad",
+    keys = {
+      { "<leader>cb", ":Luapad<cr>", desc = "Lua Scratch buffer" },
+    },
+    -- last release is pretty old
+    version = false,
+  },
+
+  -- BUG: seems broken; perhaps must be loaded elsewhere?
   {
     "nvim-telescope/telescope-frecency.nvim",
     config = function()
@@ -82,6 +110,14 @@ local M = {
       { "<leader>f/", "<cmd>Telescope frecency<cr>", desc = "Telescope Frecency" },
     },
   },
+  -- -- NOTE: requires nvim >=0.10
+  -- {
+  --   "Bekaboo/dropbar.nvim",
+  --   -- optional, but required for fuzzy finder support
+  --   dependencies = {
+  --     "nvim-telescope/telescope-fzf-native.nvim",
+  --   },
+  -- },
   -- {
   --   "someone-stole-my-name/yaml-companion.nvim",
   --   dependencies = {
@@ -109,4 +145,19 @@ local M = {
   --   },
   -- },
 }
+
+if vim.fn.has("nvim-0.10") == 1 then
+  table.insert(M, {
+    "Bekaboo/dropbar.nvim",
+    -- optional, but required for fuzzy finder support
+    dependencies = {
+      "nvim-telescope/telescope-fzf-native.nvim",
+    },
+  })
+  --   vim.opt.foldmethod = "expr"
+  --   vim.opt.foldexpr = "v:lua.require'lazyvim.util'.ui.foldexpr()"
+  -- else
+  --   vim.opt.foldmethod = "indent"
+end
+
 return M

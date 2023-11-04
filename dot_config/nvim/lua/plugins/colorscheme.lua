@@ -4,8 +4,9 @@ local M = {
     lazy = true,
     name = "catppuccin",
     opts = {
+      flavour = "macchiato",
       dim_inactive = {
-        enabled = true
+        enabled = true,
       },
       integrations = {
         alpha = true,
@@ -28,6 +29,7 @@ local M = {
         },
         navic = { enabled = true, custom_bg = "lualine" },
         neotest = true,
+        neogit = true,
         noice = true,
         notify = true,
         neotree = true,
@@ -42,7 +44,7 @@ local M = {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-macchiato",
+      colorscheme = "catppuccin",
     },
   },
 }
