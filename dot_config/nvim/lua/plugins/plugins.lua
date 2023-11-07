@@ -11,12 +11,13 @@ local M = {
       end,
     },
   },
-  {
-    "simrat39/symbols-outline.nvim",
-    cmd = "SymbolsOutline",
-    keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
-    config = true,
-  },
+  -- NOTE: not worth using since aerial extra was added
+  -- {
+  --   "simrat39/symbols-outline.nvim",
+  --   cmd = "SymbolsOutline",
+  --   keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
+  --   config = true,
+  -- },
 
   -- add more treesitter parsers (extend the default)
   {
@@ -98,62 +99,82 @@ local M = {
     -- last release is pretty old
     version = false,
   },
+  -- NOTE: choose either this + navic extra in lazy.lua, OR dropbar
+  {
+    "SmiteshP/nvim-navbuddy",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "SmiteshP/nvim-navic",
+      "MunifTanjim/nui.nvim",
+    },
+    keys = {
+      { "<leader>c.", "<cmd>Navbuddy<cr>", desc = "Nav" },
+    },
+    config = function()
+      local navbuddy = require("nvim-navbuddy")
+      navbuddy.setup({
+        window = {
+          border = "single",
+        },
+        lsp = { auto_attach = true },
+      })
+    end,
+  },
 
   -- BUG: seems broken; perhaps must be loaded elsewhere?
+  -- {
+  --   "nvim-telescope/telescope-frecency.nvim",
+  --   config = function()
+  --     require("telescope").load_extension("frecency")
+  --   end,
+  --   keys = {
+  --     -- NOTE: decide kind={ tab, floating }
+  --     { "<leader>f/", "<cmd>Telescope frecency<cr>", desc = "Telescope Frecency" },
+  --   },
+  -- },
   {
-    "nvim-telescope/telescope-frecency.nvim",
-    config = function()
-      require("telescope").load_extension("frecency")
-    end,
-    keys = {
-      -- NOTE: decide kind={ tab, floating }
-      { "<leader>f/", "<cmd>Telescope frecency<cr>", desc = "Telescope Frecency" },
+    "lukas-reineke/headlines.nvim",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    opts = {
+      markdown = {
+        -- NOTE: needed for https://github.com/lukas-reineke/headlines.nvim/issues/41
+        fat_headline_lower_string = "▔",
+      },
     },
   },
-  -- -- NOTE: requires nvim >=0.10
-  -- {
-  --   "Bekaboo/dropbar.nvim",
-  --   -- optional, but required for fuzzy finder support
-  --   dependencies = {
-  --     "nvim-telescope/telescope-fzf-native.nvim",
-  --   },
-  -- },
-  -- {
-  --   "someone-stole-my-name/yaml-companion.nvim",
-  --   dependencies = {
-  --     { "neovim/nvim-lspconfig" },
-  --     { "nvim-lua/plenary.nvim" },
-  --     { "nvim-telescope/telescope.nvim" },
-  --   },
-  --   config = function(_, opts)
-  --     require("yaml-companion").setup(opts)
-  --     require("telescope").load_extension("yaml_schema")
-  --   end,
-  -- },
-
-  -- NOTE: pyright seems to work fine without this
-  -- add pyright to lspconfig
-  --   "neovim/nvim-lspconfig",
-  -- {
-  --   ---@class PluginLspOpts
-  --   opts = {
-  --     ---@type lspconfig.options
-  --     servers = {
-  --       -- pyright will be automatically installed with mason and loaded with lspconfig
-  --       pyright = {},
-  --     },
-  --   },
-  -- },
+  {
+    "someone-stole-my-name/yaml-companion.nvim",
+    ft = { "yaml" },
+    opts = {
+      builtin_matchers = {
+        kubernetes = { enabled = true },
+      },
+    },
+    dependencies = {
+      { "neovim/nvim-lspconfig" },
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope.nvim" },
+    },
+    config = function(_, opts)
+      local cfg = require("yaml-companion").setup(opts)
+      require("lspconfig")["yamlls"].setup(cfg)
+      require("telescope").load_extension("yaml_schema")
+    end,
+  },
 }
 
 if vim.fn.has("nvim-0.10") == 1 then
-  table.insert(M, {
-    "Bekaboo/dropbar.nvim",
-    -- optional, but required for fuzzy finder support
-    dependencies = {
-      "nvim-telescope/telescope-fzf-native.nvim",
-    },
-  })
+  table.insert(
+    M,
+    -- NOTE: choose ONE of: dropbar, aerial.nvim (lvim extra), OR navbuddy + navic (lvim extra).
+    {
+      "Bekaboo/dropbar.nvim",
+      -- optional, but required for fuzzy finder support
+      dependencies = {
+        "nvim-telescope/telescope-fzf-native.nvim",
+      },
+    }
+  )
   --   vim.opt.foldmethod = "expr"
   --   vim.opt.foldexpr = "v:lua.require'lazyvim.util'.ui.foldexpr()"
   -- else

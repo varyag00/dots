@@ -2,13 +2,12 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
--- NOTE: use vim.keymap.set
 local M = {
   -- buffers
-  vim.keymap.set("n", "<leader>bc", ":bdelete<cr>", { desc = "Delete buffer" }),
-  vim.keymap.set("n", "<leader>bk", ":bdelete<cr>", { desc = "Delete buffer" }),
-  vim.keymap.set({ "n", "i" }, "<A-w>", ":bdelete<cr>", { desc = "Delete buffer" }),
-  vim.keymap.set("n", "<leader>bb", "<cmd>Telescope buffers<cr>"),
+  vim.keymap.set("n", "<leader>bc", require("mini.bufremove").delete, { desc = "Delete buffer" }),
+  vim.keymap.set("n", "<leader>bk", require("mini.bufremove").delete, { desc = "Delete buffer" }),
+  vim.keymap.set({ "n", "i" }, "<A-w>", require("mini.bufremove").delete, { desc = "Delete buffer" }),
+  vim.keymap.set("n", "<leader>bb", "<cmd>Telescope buffers<cr>", { desc = "Show Buffers" }),
 
   vim.keymap.set("n", "<A-h>", "<cmd>BufferLineCyclePrev<cr>"),
   vim.keymap.set("n", "<A-l>", "<cmd>BufferLineCycleNext<cr>"),
@@ -24,5 +23,10 @@ local M = {
 
   -- Paste without replace clipboard
   vim.keymap.set("v", "p", '"_dP'),
+
+  -- BUG: Fix for the weird "n" behaviour.... however I am quite sure I introduced this bug by set setting "n" in keys somewhere...
+  -- TODO: find the culprit
+  vim.keymap.set("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search result" }),
+  vim.keymap.set({ "o", "x" }, "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" }),
 }
 return M
