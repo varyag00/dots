@@ -6,7 +6,7 @@ local M = {
   -- buffers
   vim.keymap.set("n", "<leader>bc", require("mini.bufremove").delete, { desc = "Delete buffer" }),
   vim.keymap.set("n", "<leader>bk", require("mini.bufremove").delete, { desc = "Delete buffer" }),
-  vim.keymap.set({ "n", "i" }, "<A-w>", require("mini.bufremove").delete, { desc = "Delete buffer" }),
+  -- NOTE: prefer the default <leader>fb
   vim.keymap.set("n", "<leader>bb", "<cmd>Telescope buffers<cr>", { desc = "Show Buffers" }),
 
   vim.keymap.set("n", "<A-h>", "<cmd>BufferLineCyclePrev<cr>"),
