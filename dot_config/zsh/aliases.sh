@@ -1,12 +1,8 @@
 #!/bin/bash
 alias manage="python manage.py"
 alias pip="python -m pip"
+alias reload="source ~/.zshrc"
 
-# taking a break from lvim
-# if type "lvim" &>/dev/null; then
-# 	alias vim=lvim
-# 	alias vi=lvim
-# elif type "nvim" &>/dev/null; then
 if type "nvim" &>/dev/null; then
 	alias vim=nvim
 	alias vi=nvim

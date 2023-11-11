@@ -80,10 +80,7 @@ fi
 # Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
 export KEYTIMEOUT=1
 
-# remove user@hostname prompt
-# prompt_context(){}
-#
-# User configuration
+# NOTE: User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -114,8 +111,8 @@ if [ -e $HOME/.ssh_hosts ]; then
 fi
 
 # current workstation-specific configuration; NOT VERSION CONTROLLED
-if [ -e $SHDIR/.config/pls-gitignore-wks.sh ]; then
-	source $SHDIR/.config/pls-gitignore-wks.sh
+if [ -e $HOME/pls-gitignore-wks.sh ]; then
+	source $HOME/pls-gitignore-wks.sh
 fi
 
 # fzf
