@@ -1,6 +1,6 @@
 # LazyVim Cheatsheet
 
-## Keymaps
+## Useful Keymaps
 
 ```lua
 -- NOTE: terminal
@@ -10,8 +10,12 @@
 <leader>sh    -- open lazyvim help
 <leader>sk    -- keybind help
 
--- NOTE: navigation
+-- NOTE: general navigation
 <C-n> & <C-p> -- next and prev in list, insert mode
+<leader>sm    -- search marks
+
+-- NOTE: code navigation
+<leader>ss    -- see workspace symbols (aerial)
 ```
 
 ## LSP
