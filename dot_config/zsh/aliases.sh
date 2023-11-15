@@ -1,6 +1,6 @@
 #!/bin/bash
 alias manage="python manage.py"
-alias pip="python -m pip"
+# alias pip="python -m pip"
 alias reload="source ~/.zshrc"
 
 if type "nvim" &>/dev/null; then
