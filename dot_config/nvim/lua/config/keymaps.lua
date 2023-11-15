@@ -3,10 +3,15 @@
 -- Add any additional keymaps here
 
 -- buffers
-if not vim.g.vscode then
-  vim.keymap.set("n", "<leader>bc", require("mini.bufremove").delete, { desc = "Delete buffer" })
-  vim.keymap.set("n", "<leader>bk", require("mini.bufremove").delete, { desc = "Delete buffer" })
-end
+-- NOTE: only here for reference
+-- if not vim.g.vscode then
+--   vim.keymap.set("n", "<leader>bc", require("mini.bufremove").delete, { desc = "Delete buffer" })
+--   vim.keymap.set("n", "<leader>bk", require("mini.bufremove").delete, { desc = "Delete buffer" })
+-- end
+
+-- use remap = true to point (remap) to an existing key mappings
+vim.keymap.set("n", "<leader>bk", "<leader>bd", { desc = "Delete buffer", remap = true })
+vim.keymap.set("n", "<leader>bc", "<leader>bd", { desc = "Delete buffer", remap = true })
 -- NOTE: prefer the default <leader>fb
 vim.keymap.set("n", "<leader>bb", "<cmd>Telescope buffers<cr>", { desc = "Show Buffers" })
 

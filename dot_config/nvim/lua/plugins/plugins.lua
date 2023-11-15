@@ -161,6 +161,42 @@ local M = {
       require("telescope").load_extension("yaml_schema")
     end,
   },
+
+  -- -- extend nvim-cmp
+  {
+    "hrsh7th/nvim-cmp",
+    ---@param opts cmp.ConfigSchema
+    opts = function(_, opts)
+      local cmp = require("cmp")
+      -- BUG: table.insert doesn't work, so for now I have to overrride entire opts.mappings
+      -- table.insert(opts.mapping, { ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }) })
+      -- table.insert(opts.mapping, { ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }) })
+
+      opts.mapping = cmp.mapping.preset.insert({
+        -- add C-j, C-k, tab, S-tab
+        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        -- NOTE: rest below is lazyvim default mapping, see https://github.com/LazyVim/LazyVim/blob/68ff818a5bb7549f90b05e412b76fe448f605ffb/lua/lazyvim/plugins/coding.lua#L57
+        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-e>"] = cmp.mapping.abort(),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ["<S-CR>"] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = true,
+        }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ["<C-CR>"] = function(fallback)
+          cmp.abort()
+          fallback()
+        end,
+      })
+    end,
+  },
 }
 
 if vim.fn.has("nvim-0.10") == 1 then
@@ -175,10 +211,6 @@ if vim.fn.has("nvim-0.10") == 1 then
       },
     }
   )
-  --   vim.opt.foldmethod = "expr"
-  --   vim.opt.foldexpr = "v:lua.require'lazyvim.util'.ui.foldexpr()"
-  -- else
-  --   vim.opt.foldmethod = "indent"
 end
 
 return M
