@@ -1,5 +1,11 @@
 #!/bin/bash
-alias manage="python manage.py"
+
+# don't alias manage when it's being managed by e.g. poetry
+# if ! type "manage" &>/dev/null; then # BUG: this always runs. Probably an unexpected return code due to !
+# 	alias manage="python manage.py"
+# fi
+alias pyman="python manage.py"
+
 # alias pip="python -m pip"
 alias reload="source ~/.zshrc"
 

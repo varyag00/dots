@@ -12,6 +12,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export SRC="/usr/local/src"
+export WORK="$SRC/work"
 export DOTSDIR="$HOME/.config"
 export ZSHDIR="$DOTSDIR/zsh"
 export ZSH_PLUGINS="$ZSHDIR/plugins"
@@ -97,6 +98,12 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# NOTE: NOT VERSION CONTROLLED
+# current workstation-specific configuration
+if [ -e $HOME/pls-gitignore-wks.sh ]; then
+	source $HOME/pls-gitignore-wks.sh
+fi
+
 # aliases
 if [ -e $ZSHDIR/aliases.sh ]; then
 	source $ZSHDIR/aliases.sh
@@ -110,10 +117,6 @@ if [ -e $HOME/.ssh_hosts ]; then
 	source $HOME/.ssh_hosts
 fi
 
-# current workstation-specific configuration; NOT VERSION CONTROLLED
-if [ -e $HOME/pls-gitignore-wks.sh ]; then
-	source $HOME/pls-gitignore-wks.sh
-fi
 
 # fzf
 if [ ! command -v fzf &> /dev/null ]; then

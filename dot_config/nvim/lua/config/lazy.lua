@@ -6,34 +6,41 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
+local spec = {
+  -- add LazyVim and import its plugins
+  { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+  -- import any extras modules here
+  { import = "lazyvim.plugins.extras.dap.core" },
+  { import = "lazyvim.plugins.extras.test.core" },
+  -- { import = "lazyvim.plugins.extras.lang.typescript" },
+  -- { import = "lazyvim.plugins.extras.lang.rust" },
+  -- { import = "lazyvim.plugins.extras.lang.go" },
+  { import = "lazyvim.plugins.extras.lang.python" },
+  { import = "lazyvim.plugins.extras.lang.json" },
+  { import = "lazyvim.plugins.extras.lang.yaml" },
+  { import = "lazyvim.plugins.extras.lang.terraform" },
+  { import = "lazyvim.plugins.extras.ui.mini-animate" },
+  { import = "lazyvim.plugins.extras.util.project" },
+  { import = "lazyvim.plugins.extras.editor.navic" },
+  { import = "lazyvim.plugins.extras.editor.aerial" },
+
+  -- TODO: disable at work
+  -- { import = "lazyvim.plugins.extras.coding.codeium" },
+
+  -- BUG: gives weird symbols, see this issue: https://github.com/lukas-reineke/headlines.nvim/issues/41
+  --- solution seems to be to switch terminal font or to remove the offending char (see last post above)
+  { import = "lazyvim.plugins.extras.lang.markdown" },
+
+  -- import/override with your plugins
+  { import = "plugins" },
+}
+-- only run codeium when not at work
+if not os.getenv("MSV_WKS") then
+  table.insert(spec, { import = "lazyvim.plugins.extras.coding.codeium" })
+end
+
 require("lazy").setup({
-  spec = {
-    -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    -- import any extras modules here
-    { import = "lazyvim.plugins.extras.dap.core" },
-    { import = "lazyvim.plugins.extras.test.core" },
-    -- { import = "lazyvim.plugins.extras.lang.typescript" },
-    -- { import = "lazyvim.plugins.extras.lang.rust" },
-    -- { import = "lazyvim.plugins.extras.lang.go" },
-    { import = "lazyvim.plugins.extras.lang.python" },
-    { import = "lazyvim.plugins.extras.lang.json" },
-    { import = "lazyvim.plugins.extras.lang.yaml" },
-    { import = "lazyvim.plugins.extras.lang.terraform" },
-    { import = "lazyvim.plugins.extras.ui.mini-animate" },
-    { import = "lazyvim.plugins.extras.util.project" },
-    { import = "lazyvim.plugins.extras.editor.navic" },
-    { import = "lazyvim.plugins.extras.editor.aerial" },
-    -- TODO: disable at work
-    { import = "lazyvim.plugins.extras.coding.codeium" },
-
-    -- BUG: gives weird symbols, see this issue: https://github.com/lukas-reineke/headlines.nvim/issues/41
-    --- solution seems to be to switch terminal font or to remove the offending char (see last post)
-    { import = "lazyvim.plugins.extras.lang.markdown" },
-
-    -- import/override with your plugins
-    { import = "plugins" },
-  },
+  spec = spec,
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
     -- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
