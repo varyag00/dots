@@ -6,3 +6,5 @@ local opt = vim.opt
 
 -- disable popup menu blending (transparency)
 opt.pumblend = 0
+
+opt.clipboard = "unnamed" -- Do NOT sync with system clipboard

@@ -58,3 +58,20 @@ fi
 if type "chezmoi" &>/dev/null; then
 	alias cm="chezmoi"
 fi
+
+# NOTE: testing out nala, a better alternative to apt
+# see: https://christitus.com/stop-using-apt/
+# make sure to run sudo nala fetch on new systems
+if type "nala" &>/dev/null; then
+	apt() {
+		command nala "$@"
+	}
+	sudo() {
+		if [ "$1" = "apt" ]; then
+			shift
+			command sudo nala "$@"
+		else
+			command sudo "$@"
+		fi
+	}
+fi
