@@ -4,9 +4,12 @@
 # if ! type "manage" &>/dev/null; then # BUG: this always runs. Probably an unexpected return code due to !
 # 	alias manage="python manage.py"
 # fi
-alias pyman="python manage.py"
-
 # alias pip="python -m pip"
+alias pyman="python manage.py"
+if type "pipx" &>/dev/null; then
+	eval "$(register-python-argcomplete pipx)"
+fi
+
 alias reload="source ~/.zshrc"
 
 if type "nvim" &>/dev/null; then
