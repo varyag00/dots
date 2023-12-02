@@ -1,0 +1,59 @@
+{
+  "packages": [
+    "python@3.11",
+    "poetry@latest",
+    "pipx@latest",
+
+    "terraform@latest",
+    "ansible@latest",
+    "kubectl@latest",
+    "helm@latest",
+    "kubectx@latest",
+    "kdash@latest",
+    "ripgrep@latest",
+    "fzf@latest",
+    "git@latest",
+    "tldr@latest",
+    "navi@latest",
+    "procs@latest",
+    "zoxide@latest",
+    "gping@latest",
+    "tre-command@latest",
+    "rm-improved@latest",
+    "duf@latest",
+    "bat@latest",
+    "dog@latest",
+    "thefuck@latest",
+    "ctop@latest",
+    "httpie@latest",
+    "http-prompt@latest",
+    "bandwhich@latest",
+    "mycli@latest",
+    "pgcli@latest",
+    "gobang@latest",
+    "lsd@latest",
+    "sqlite@latest",
+    "fd@latest",
+    "jansson@latest",
+    "cmake@latest",
+    "libtool@latest",
+    "gcc@latest",
+    "corepack@latest",
+    "nodejs@latest",
+    "codespell@latest",
+    "stylua@latest",
+    "tree-sitter@latest",
+    "chezmoi@latest",
+    "neovim@latest"
+  ],
+  "shell": {
+    "init_hook": [
+      "echo 'Welcome to devbox!' > /dev/null"
+    ],
+    "scripts": {
+      "test": [
+        "echo \"Error: no test specified\" && exit 1"
+      ]
+    }
+  }
+}

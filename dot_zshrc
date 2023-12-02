@@ -171,20 +171,26 @@ POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 export PNPM_HOME="/home/dan/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
 
+export PATH="$PNPM_HOME:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # terraform autocomplete
 if type "terraform" &> /dev/null; then
-complete -o nospace -C /home/linuxbrew/.linuxbrew/Cellar/terraform/1.3.9/bin/terraform terraform
+  complete -o nospace -C /home/linuxbrew/.linuxbrew/Cellar/terraform/1.3.9/bin/terraform terraform
 fi
-
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 if type "fuck" &> /dev/null; then
   eval $(thefuck --alias)
+fi
+
+if type "zoxide" &> /dev/null; then
   eval "$(zoxide init zsh)"
+fi
+
+if type "devbox" &> /dev/null; then
+  eval "$(devbox global shellenv)"
 fi
 
 # NOTE: fzf-tab completions config
