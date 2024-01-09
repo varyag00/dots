@@ -62,6 +62,14 @@ if type "chezmoi" &>/dev/null; then
 	alias cm="chezmoi"
 fi
 
+if type "lazygit" &>/dev/null; then
+	alias lgit="lazygit"
+fi
+
+if type "lazydocker" &>/dev/null; then
+	alias ldock="lazydocker"
+fi
+
 # # NOTE: testing out nala, a better alternative to apt
 # # see: https://christitus.com/stop-using-apt/
 # # make sure to run sudo nala fetch on new systems

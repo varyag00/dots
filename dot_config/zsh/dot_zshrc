@@ -190,6 +190,7 @@ fi
 
 if type "devbox" &> /dev/null; then
   eval "$(devbox global shellenv)"
+  export DEVBOX_GLOBAL_PATH="$(devbox global path)/devbox.json"
 fi
 
 # NOTE: fzf-tab completions config

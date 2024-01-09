@@ -4,22 +4,29 @@ This is a collection of my dotfiles, which are managed using [chezmoi](https://w
 
 ## Usage
 
-To install the dotfiles on a new machine, run:
+To install the dotfiles on a new machine:
 
 ```sh
-$ chezmoi init --apply --verbose https://github.com/varyag00/dots.git
+chezmoi init --apply --verbose https://github.com/varyag00/dots.git
 ```
 
-To see which dotfiles are managed, run:
+
+To see which dotfiles are managed:
 
 ```sh
-$ chezmoi managed
+chezmoi managed
 ```
 
-To update the dotfiles from the remote repo, run:
+To update the dotfiles from the remote repo:
 
 ```sh
-$ chezmoi update
+chezmoi update
+```
+
+To view the local diff:
+
+```sh
+chezmoi diff
 ```
 
 To update the dotfiles using local changes, there are a few options:
@@ -28,10 +35,10 @@ To update the dotfiles using local changes, there are a few options:
 # --- editing in the dotfiles _repo_ ---
 
 # 1. edit the dotfiles repo directly in this directory, in default editor
-$ chezmoi edit
+chezmoi edit
 
 # 2. use `chezmoi cd` to cd into the dotfiles directory, edit the files directly, then `chezmoi apply` to apply the managed changes
-$ chezmoi update
+chezmoi apply
 
 # --- edit the dotfiles $HOME dir ---
 

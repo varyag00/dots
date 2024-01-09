@@ -45,7 +45,10 @@
     "neovim@latest",
     "zsh@latest",
     "docker@latest",
-    "busybox@latest"
+    "busybox@latest",
+    "lazygit@latest",
+    "lazydocker@latest",
+    "xsel@latest"
   ],
   "shell": {
     "init_hook": [
