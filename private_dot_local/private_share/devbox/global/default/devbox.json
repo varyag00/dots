@@ -3,7 +3,6 @@
     "python@3.11",
     "poetry@latest",
     "pipx@latest",
-
     "terraform@latest",
     "ansible@latest",
     "kubectl@latest",
@@ -30,7 +29,6 @@
     "bandwhich@latest",
     "mycli@latest",
     "pgcli@latest",
-    "gobang@latest",
     "lsd@latest",
     "sqlite@latest",
     "fd@latest",
@@ -44,11 +42,14 @@
     "stylua@latest",
     "tree-sitter@latest",
     "chezmoi@latest",
-    "neovim@latest"
+    "neovim@latest",
+    "zsh@latest",
+    "docker@latest",
+    "busybox@latest"
   ],
   "shell": {
     "init_hook": [
-      "echo 'Welcome to devbox!' > /dev/null"
+      "reload"
     ],
     "scripts": {
       "test": [
