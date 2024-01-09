@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # required by completions
 autoload -U +X bashcompinit && bashcompinit
@@ -14,8 +14,7 @@ fi
 export SRC="/usr/local/src"
 export WORK="$SRC/work"
 export DOTSDIR="$HOME/.config"
-export ZSHDIR="$DOTSDIR/zsh"
-export ZSH_PLUGINS="$ZSHDIR/plugins"
+export ZSH_PLUGINS="$ZDOTDIR/plugins"
 export KUBECONFIG="$HOME/.kube/config"
 
 # If you come from bash you might have to change your $PATH.
@@ -40,8 +39,8 @@ setopt appendhistory
 export ZSH_CACHE_DIR="$HOME/.cache/zsh"
 mkdir -p $ZSH_CACHE_DIR/completions
 
-if [ -e $ZSHDIR/.p10k.zsh ]; then
-	source $ZSHDIR/powerlevel10k/powerlevel10k.zsh-theme
+if [ -e $ZDOTDIR/.p10k.zsh ]; then
+	source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
 fi
 
 # NOTE: See https://github.com/catppuccin/zsh-syntax-highlighting
@@ -105,8 +104,8 @@ if [ -e $HOME/pls-gitignore-wks.sh ]; then
 fi
 
 # aliases
-if [ -e $ZSHDIR/aliases.sh ]; then
-	source $ZSHDIR/aliases.sh
+if [ -e $ZDOTDIR/aliases.sh ]; then
+	source $ZDOTDIR/aliases.sh
 fi
 
 if [ -e $HOME/.profile ]; then
@@ -130,7 +129,7 @@ else
 	[ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
 
   # custom extensions
-	[ -f $ZSHDIR/fzf-custom.zsh ] && source $ZSHDIR/fzf-custom.zsh
+	[ -f $ZDOTDIR/fzf-custom.zsh ] && source $ZDOTDIR/fzf-custom.zsh
 fi
 
 # WSL2 XServer
@@ -165,7 +164,7 @@ fix_wsl2_interop() {
 # ~/.emacs.d/bin/doom env > /dev/null 2>&1
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f $ZSHDIR/.p10k.zsh ]] || source $ZSHDIR/.p10k.zsh
+[[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
 
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 POWERLEVEL9K_INSTANT_PROMPT=quiet

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+alias reload="source $ZDOTDIR/.zshrc"
+
 # don't alias manage when it's being managed by e.g. poetry
 # if ! type "manage" &>/dev/null; then # BUG: this always runs. Probably an unexpected return code due to !
 # 	alias manage="python manage.py"
@@ -9,8 +11,6 @@ alias pyman="python manage.py"
 if type "pipx" &>/dev/null; then
 	eval "$(register-python-argcomplete pipx)"
 fi
-
-alias reload="source ~/.zshrc"
 
 if type "nvim" &>/dev/null; then
 	alias vim=nvim
@@ -62,19 +62,19 @@ if type "chezmoi" &>/dev/null; then
 	alias cm="chezmoi"
 fi
 
-# NOTE: testing out nala, a better alternative to apt
-# see: https://christitus.com/stop-using-apt/
-# make sure to run sudo nala fetch on new systems
-if type "nala" &>/dev/null; then
-	apt() {
-		command nala "$@"
-	}
-	sudo() {
-		if [ "$1" = "apt" ]; then
-			shift
-			command sudo nala "$@"
-		else
-			command sudo "$@"
-		fi
-	}
-fi
+# # NOTE: testing out nala, a better alternative to apt
+# # see: https://christitus.com/stop-using-apt/
+# # make sure to run sudo nala fetch on new systems
+# if type "nala" &>/dev/null; then
+# 	apt() {
+# 		command nala "$@"
+# 	}
+# 	sudo() {
+# 		if [ "$1" = "apt" ]; then
+# 			shift
+# 			command sudo nala "$@"
+# 		else
+# 			command sudo "$@"
+# 		fi
+# 	}
+# fi
