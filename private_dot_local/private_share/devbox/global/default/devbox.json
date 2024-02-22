@@ -1,22 +1,16 @@
 {
   "packages": [
-    "python@3.11",
-    "poetry@latest",
-    "pipx@latest",
-    "terraform@latest",
-    "ansible@latest",
-    "kubectl@latest",
-    "helm@latest",
-    "kubectx@latest",
-    "kdash@latest",
+    "lsd@latest",
     "ripgrep@latest",
     "fzf@latest",
     "git@latest",
-    "tldr@latest",
+    "chezmoi@latest",
+    "direnv@latest",
+    "zoxide@latest",
     "navi@latest",
     "procs@latest",
-    "zoxide@latest",
     "gping@latest",
+    "xsel@latest",
     "tre-command@latest",
     "rm-improved@latest",
     "duf@latest",
@@ -27,36 +21,26 @@
     "httpie@latest",
     "http-prompt@latest",
     "bandwhich@latest",
-    "mycli@latest",
-    "pgcli@latest",
-    "lsd@latest",
-    "sqlite@latest",
-    "fd@latest",
     "jansson@latest",
-    "cmake@latest",
-    "libtool@latest",
-    "gcc@latest",
-    "corepack@latest",
-    "nodejs@latest",
-    "codespell@latest",
-    "stylua@latest",
-    "tree-sitter@latest",
-    "chezmoi@latest",
-    "neovim@latest",
-    "zsh@latest",
-    "docker@latest",
-    "busybox@latest",
+    "fd@latest",
+    "tlrc@latest",
+    "python@3.11",
+    "pipx@latest",
     "lazygit@latest",
     "lazydocker@latest",
-    "xsel@latest"
+    "kubectl@latest",
+    "kubectx@latest",
+    "kubernetes-helm@latest",
+    "k9s@latest"
   ],
   "shell": {
     "init_hook": [
-      "reload"
+      "echo 'Welcome to devbox!' > /dev/null"
     ],
     "scripts": {
-      "test": [
-        "echo \"Error: no test specified\" && exit 1"
+      "test_nix": [
+        "echo \"Checking if nix install got borked\"",
+        "nix --version"
       ]
     }
   }
