@@ -17,6 +17,11 @@ if type "nvim" &>/dev/null; then
 	alias vi=nvim
 fi
 
+if type "z" &>/dev/null; then
+	alias cd=z
+	alias cdi=zi
+fi
+
 if type "lsd" &>/dev/null; then
 	alias ls="lsd"
 	alias la="lsd --long --all"

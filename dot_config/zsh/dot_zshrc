@@ -192,6 +192,11 @@ if type "devbox" &> /dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
+if type "atuin" &> /dev/null; then
+  eval "$(atuin init zsh)"
+fi
+
+
 # NOTE: fzf-tab completions config
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
