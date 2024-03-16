@@ -32,7 +32,8 @@
     "kubectx@latest",
     "kubernetes-helm@latest",
     "k9s@latest",
-    "atuin@latest"
+    "atuin@latest",
+    "zellij@latest"
   ],
   "shell": {
     "init_hook": [

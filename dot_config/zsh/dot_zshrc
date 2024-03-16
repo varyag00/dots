@@ -188,7 +188,7 @@ if type "devbox" &> /dev/null; then
   export DEVBOX_GLOBAL_PATH="$(devbox global path)/devbox.json"
 fi
 
-if type "devbox" &> /dev/null; then
+if type "direnv" &> /dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
