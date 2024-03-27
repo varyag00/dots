@@ -3,6 +3,9 @@ if not vim.g.vscode then
   return {}
 end
 
+-- NOTE: code's which-key needpops up too slowly without this setting
+-- trying out different timeoutlen
+vim.o.timeoutlen = 100
 -- vim.o.timeoutlen = 500
 -- vim.o.updatetime = 100
 
@@ -20,6 +23,7 @@ vim.keymap.set("n", "<leader>bd", "<nop>")
 vim.keymap.set("n", "<leader>bD", "<nop>")
 
 -- zen
+--  NOTE: as a test, this _does_ work and is loaded...
 vim.keymap.set("n", "<leader>wo", ":call VSCodeNotify('workbench.action.toggleZenMode')<cr>")
 
 -- explorer
@@ -27,7 +31,13 @@ vim.keymap.set("n", "<leader>e", ":call VSCodeNotify('workbench.view.explorer')<
 vim.keymap.set("n", "<leader>fe", "<leader>e")
 
 -- magit
+-- BUG: attempts to call lazygit (default <leader>gg command)
+-- this attempt to completely disble to <leader>gg keymap, but doesn't work
+-- vim.api.nvim_set_keymap("n", "<leader>gg", "", { noremap = true, silent = true })
+
+-- vim.keymap.set("n", "<leader>gg", ":call VSCodeNotify('magit.status')<cr>")
 vim.keymap.set("n", "<leader>gg", ":call VSCodeNotify('magit.status')<cr>")
+vim.keymap.set("n", "<leader>gs", ":call VSCodeNotify('magit.status')<cr>")
 vim.keymap.set("n", "<leader>gS", ":call VSCodeNotify('magit.status')<cr>")
 
 -- code actions

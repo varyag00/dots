@@ -17,7 +17,16 @@ if type "nvim" &>/dev/null; then
 	alias vi=nvim
 fi
 
-if type "z" &>/dev/null; then
+if type "direnv" &>/dev/null; then
+	eval "$(direnv hook zsh)"
+fi
+
+if type "atuin" &>/dev/null; then
+	eval "$(atuin init zsh)"
+fi
+
+if type "zoxide" &>/dev/null; then
+	eval "$(zoxide init zsh)"
 	alias cd=z
 	alias cdi=zi
 fi
@@ -73,6 +82,10 @@ fi
 
 if type "lazydocker" &>/dev/null; then
 	alias ldock="lazydocker"
+fi
+
+if type "fuck" &>/dev/null; then
+	eval "$(thefuck --alias)"
 fi
 
 # # NOTE: testing out nala, a better alternative to apt

@@ -30,6 +30,10 @@ vim.keymap.set("t", "<C-\\>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 -- Paste without replace clipboard
 vim.keymap.set("v", "p", '"_dP')
 
+-- System clipboard helpers
+vim.keymap.set("v", "<leader>CY", '"+y', { desc = "Yank to system clipboard" })
+vim.keymap.set({ "v", "n" }, "<leader>CP", '"+p', { desc = "Paste from system clipboard" })
+
 -- BUG: Fix for the weird "n" behaviour.... however I am quite sure I introduced this bug by set setting "n" in keys somewhere...
 -- TODO: find the culprit
 vim.keymap.set("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search result" })

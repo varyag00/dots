@@ -25,6 +25,11 @@ export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
 # doom emacs
 export PATH=$HOME/.emacs.d/bin:$PATH
 
+if type "devbox" &> /dev/null; then
+  eval "$(devbox global shellenv)"
+  export DEVBOX_GLOBAL_PATH="$(devbox global path)/devbox.json"
+fi
+
 # Go Global variables
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
@@ -170,31 +175,10 @@ POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 export PNPM_HOME="/home/dan/.local/share/pnpm"
-
 export PATH="$PNPM_HOME:$PATH"
+
 export PATH="$HOME/.poetry/bin:$PATH"
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
-if type "fuck" &> /dev/null; then
-  eval $(thefuck --alias)
-fi
-
-if type "zoxide" &> /dev/null; then
-  eval "$(zoxide init zsh)"
-fi
-
-if type "devbox" &> /dev/null; then
-  eval "$(devbox global shellenv)"
-  export DEVBOX_GLOBAL_PATH="$(devbox global path)/devbox.json"
-fi
-
-if type "direnv" &> /dev/null; then
-  eval "$(direnv hook zsh)"
-fi
-
-if type "atuin" &> /dev/null; then
-  eval "$(atuin init zsh)"
-fi
+# export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 
 # NOTE: fzf-tab completions config
@@ -212,3 +196,4 @@ zstyle ':fzf-tab:*' switch-group ',' '.'
 # ctrl- arrow keys
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+

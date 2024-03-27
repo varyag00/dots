@@ -24,9 +24,6 @@ local spec = {
   { import = "lazyvim.plugins.extras.editor.navic" },
   { import = "lazyvim.plugins.extras.editor.aerial" },
 
-  -- TODO: disable at work
-  -- { import = "lazyvim.plugins.extras.coding.codeium" },
-
   -- BUG: gives weird symbols, see this issue: https://github.com/lukas-reineke/headlines.nvim/issues/41
   --- solution seems to be to switch terminal font or to remove the offending char (see last post above)
   { import = "lazyvim.plugins.extras.lang.markdown" },
@@ -34,9 +31,10 @@ local spec = {
   -- import/override with your plugins
   { import = "plugins" },
 }
--- only run codeium when not at work
+-- NOTE: only run these outside of work
 if not os.getenv("MSV_WKS") then
   table.insert(spec, { import = "lazyvim.plugins.extras.coding.codeium" })
+  table.insert(spec, { import = "lazyvim.plugins.extras.lang.go" })
 end
 
 require("lazy").setup({

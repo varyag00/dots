@@ -1,10 +1,12 @@
+-- NOTE: this file isn't loaded, see wezterm.lua for info
+
 local wezterm = require("wezterm")
 
 ---- Profiles ----
 
 local M = {}
 
-function M.apply_to_config(config)
+function M.apply_windows_config(config)
 	-- see: https://wezfurlong.org/wezterm/config/lua/WslDomain.html
 	config.wsl_domains = {
 		{
@@ -17,11 +19,8 @@ function M.apply_to_config(config)
 			-- default_prog = { "zsh" },
 		},
 	}
-
 	-- see: https://wezfurlong.org/wezterm/config/lua/SshDomain.html
 	config.ssh_domains = {}
-
-	-- Improve make cmd.exe
 	-- see: https://wezfurlong.org/wezterm/shell-integration.html?h=shell#using-clink-on-windows-systems
 	config.set_environment_variables = {}
 
@@ -38,6 +37,26 @@ function M.apply_to_config(config)
 		-- NOTE: if all else fails: use normal cmd
 		-- config.default_prog = { "cmd.exe" }
 	end
+
+	added_keys = {
+		-- Create a tab in a named domain
+		{
+			key = "l",
+			mods = "CTRL|SHIFT|ALT",
+			action = wezterm.action.SpawnTab({
+				DomainName = "dan@WSL:Ubuntu",
+			}),
+		},
+	}
+
+	for i, key in ipairs(added_keys) do
+		table.insert(config.keys, key)
+	end
+end
+
+function M.apply_linux_config(config)
+	config.ssh_domains = {}
+	config.set_environment_variables = {}
 end
 
 return M
