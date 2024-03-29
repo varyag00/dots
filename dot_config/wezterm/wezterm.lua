@@ -4,6 +4,17 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
+-- helper functions
+function getHostname()
+	local f = io.popen("hostname")
+	local hostname = f:read("*a") or ""
+	f:close()
+	hostname = string.gsub(hostname, "\n$", "")
+	return hostname
+end
+
+local machine_name = os.getenv("MACHINE_NAME") or getHostname()
+
 -- if this looks weird, try the official "Catppuccin Macchiato"
 config.color_scheme = "catppuccin-macchiato"
 
@@ -14,7 +25,12 @@ config.font = wezterm.font({
 	-- ligatures: --> != ~~>
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 })
-config.font_size = 11
+
+if machine_name == "dan-pop" then
+	config.font_size = 12
+else
+	config.font_size = 11
+end
 
 ---- QoL Fixes ----
 
