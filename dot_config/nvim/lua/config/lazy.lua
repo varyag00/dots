@@ -21,8 +21,9 @@ local spec = {
   { import = "lazyvim.plugins.extras.lang.terraform" },
   { import = "lazyvim.plugins.extras.ui.mini-animate" },
   { import = "lazyvim.plugins.extras.util.project" },
-  { import = "lazyvim.plugins.extras.editor.navic" },
-  { import = "lazyvim.plugins.extras.editor.aerial" },
+  -- { import = "lazyvim.plugins.extras.editor.navic" },
+  -- { import = "lazyvim.plugins.extras.editor.aerial" },
+  { import = "lazyvim.plugins.extras.editor.outline" },
 
   -- BUG: gives weird symbols, see this issue: https://github.com/lukas-reineke/headlines.nvim/issues/41
   --- solution seems to be to switch terminal font or to remove the offending char (see last post above)
